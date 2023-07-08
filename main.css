@@ -2,7 +2,9 @@ body {
   height: 100vh;
   background-image: url("https://raw.githubusercontent.com/ParkYoungWoong/overwatch-hero-selector-vanilla/master/images/bg.jpg");
   background-size: cover;
+  /* 배경 반복 방지 */
   background-repeat: no-repeat;
+  /* 짧은 배경일 경우 fixed를 활용해서 배경유지 */
   background-attachment: fixed;
 }
 .container {
@@ -12,6 +14,8 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  /* block 요소이면서 너비가 지정된 요소인 경우 
+     margin auto를 통해 중앙 정렬 가능 */
   max-width: 660px;
   margin: 0 auto;
   padding: 40px 20px;
@@ -23,9 +27,11 @@ body {
   border: 3px solid #fff;
   border-radius: 10px;
   box-sizing: border-box;
+  /* 부모 요소보다 사진이 튀어나올 떄 hidden */
   overflow: hidden;
   background-color: #555;
   transform: skewX(-14deg);
+  /* .hero:hover 스타일에 명시되어있는 transform과 background-color을 전환함 */
   transition:
     transform .1s,
     background-color .6s;
@@ -33,14 +39,18 @@ body {
 .hero:hover {
   background-color: #ff9c00;
   transform: skewX(-14deg) scale(1.3);
+  /* 전환 후 우선 순위가 밀려 사진이 가려지는 것을 방지 
+     비교 요소들이 모두 position 속성이 없으므로 z-index가 높으면 우선 순위가 됨 */
   z-index: 1;
 }
 .hero .image {
+  /* 부모 요소 크기 기준 */
   width: 140%;
   height: 100%;
   transform: translateX(-16px) skewX(14deg);
   background-position: center;
   background-repeat: no-repeat;
+  /* 배경 이미지 크기 조정 */
   background-size: 90px;
 }
 .hero:nth-child(1) .image { background-image: url("https://raw.githubusercontent.com/ParkYoungWoong/overwatch-hero-selector-vanilla/master/images/hero1.png"); }
